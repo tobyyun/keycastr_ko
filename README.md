@@ -28,18 +28,9 @@ Homebrew version may still show Hangul keycaps such as `⌘ㅊ` and `⌘ㅈ`.
 
 ### Korean command-key build
 
-To use this fork's Korean input-source fix, build this repository locally:
-
-```console
-git clone https://github.com/tobyyun/keycastr_ko.git
-cd keycastr_ko
-git submodule update --init --recursive
-open keycastr/KeyCastr.xcodeproj
-```
-
-In Xcode, select the `KeyCastr` scheme, then build and run the app. Packaged
-builds can also be downloaded from this repository's Releases page when
-available.
+Download the latest `KeyCastr.app.zip` from this repository's
+[Releases](https://github.com/tobyyun/keycastr_ko/releases) page, unzip it, and
+drag `KeyCastr.app` into your Applications folder.
 
 ## Granting Permissions
 
