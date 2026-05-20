@@ -1,4 +1,5 @@
 .DS_Store
+*.app.zip
 build
 xcuserdata
 xcshareddata
