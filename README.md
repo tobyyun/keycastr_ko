@@ -12,13 +12,34 @@ It is also possible to develop your own visualizer on top of KeyCastr -- pull re
 
 ## Installation
 
-Download the latest release from [GitHub](https://github.com/keycastr/keycastr/releases)
+### Official upstream build
+
+Download the latest upstream release from [GitHub](https://github.com/keycastr/keycastr/releases).
 
 Or, install using [homebrew](http://brew.sh/)
 
 ```console
 brew install --cask keycastr
 ```
+
+The Homebrew cask installs the official upstream KeyCastr build. Until the
+Korean command-key display changes from this fork are released upstream, the
+Homebrew version may still show Hangul keycaps such as `⌘ㅊ` and `⌘ㅈ`.
+
+### Korean command-key build
+
+To use this fork's Korean input-source fix, build this repository locally:
+
+```console
+git clone https://github.com/tobyyun/keycastr_ko.git
+cd keycastr_ko
+git submodule update --init --recursive
+open keycastr/KeyCastr.xcodeproj
+```
+
+In Xcode, select the `KeyCastr` scheme, then build and run the app. Packaged
+builds can also be downloaded from this repository's Releases page when
+available.
 
 ## Granting Permissions
 
@@ -79,6 +100,7 @@ KeyCastr is completely free and open source, and does not employ any networking 
  - [elia](https://github.com/elia) created `keycastr` organization and forked into it.
  - [lqez](https://github.com/lqez) added a new menu bar icon.
  - [QuintB](https://github.com/QuintB) designed an updated application icon to match the icon style in modern versions of macOS.
+ - [Toby Yun](mailto:tobyyun@gmail.com) added Korean input-source command shortcut keycap handling.
 
 ## License
 
