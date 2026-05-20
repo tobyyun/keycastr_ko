@@ -159,6 +159,45 @@
     XCTAssertEqualObjects(keystroke.convertToString, @"⌃⌥⇧A");
 }
 
+- (void)test_KCKeystroke_convertsCmdKoreanLettersToUSKeycaps {
+    NSArray *koreanLetters = @[
+        @{@"keyCode": @12, @"characters": @"ㅂ", @"expected": @"⌘Q"},
+        @{@"keyCode": @13, @"characters": @"ㅈ", @"expected": @"⌘W"},
+        @{@"keyCode": @14, @"characters": @"ㄷ", @"expected": @"⌘E"},
+        @{@"keyCode": @15, @"characters": @"ㄱ", @"expected": @"⌘R"},
+        @{@"keyCode": @17, @"characters": @"ㅅ", @"expected": @"⌘T"},
+        @{@"keyCode": @16, @"characters": @"ㅛ", @"expected": @"⌘Y"},
+        @{@"keyCode": @32, @"characters": @"ㅕ", @"expected": @"⌘U"},
+        @{@"keyCode": @34, @"characters": @"ㅑ", @"expected": @"⌘I"},
+        @{@"keyCode": @31, @"characters": @"ㅐ", @"expected": @"⌘O"},
+        @{@"keyCode": @35, @"characters": @"ㅔ", @"expected": @"⌘P"},
+        @{@"keyCode": @0, @"characters": @"ㅁ", @"expected": @"⌘A"},
+        @{@"keyCode": @1, @"characters": @"ㄴ", @"expected": @"⌘S"},
+        @{@"keyCode": @2, @"characters": @"ㅇ", @"expected": @"⌘D"},
+        @{@"keyCode": @3, @"characters": @"ㄹ", @"expected": @"⌘F"},
+        @{@"keyCode": @5, @"characters": @"ㅎ", @"expected": @"⌘G"},
+        @{@"keyCode": @4, @"characters": @"ㅗ", @"expected": @"⌘H"},
+        @{@"keyCode": @38, @"characters": @"ㅓ", @"expected": @"⌘J"},
+        @{@"keyCode": @40, @"characters": @"ㅏ", @"expected": @"⌘K"},
+        @{@"keyCode": @37, @"characters": @"ㅣ", @"expected": @"⌘L"},
+        @{@"keyCode": @6, @"characters": @"ㅋ", @"expected": @"⌘Z"},
+        @{@"keyCode": @7, @"characters": @"ㅌ", @"expected": @"⌘X"},
+        @{@"keyCode": @8, @"characters": @"ㅊ", @"expected": @"⌘C"},
+        @{@"keyCode": @9, @"characters": @"ㅍ", @"expected": @"⌘V"},
+        @{@"keyCode": @11, @"characters": @"ㅠ", @"expected": @"⌘B"},
+        @{@"keyCode": @45, @"characters": @"ㅜ", @"expected": @"⌘N"},
+        @{@"keyCode": @46, @"characters": @"ㅡ", @"expected": @"⌘M"},
+    ];
+
+    for (NSDictionary *letter in koreanLetters) {
+        keystroke = [self keystrokeWithKeyCode:[letter[@"keyCode"] unsignedShortValue]
+                                     modifiers:NSEventModifierFlagCommand
+                                     characters:letter[@"characters"]
+                    charactersIgnoringModifiers:letter[@"characters"]];
+        XCTAssertEqualObjects([eventTransformer transformedValue:keystroke], letter[@"expected"]);
+    }
+}
+
 - (void)test_KCKeystroke_displaysOptLetterByDefault {
     // opt-U
     keystroke = [self keystrokeWithKeyCode:32 modifiers:524576 characters:@"" charactersIgnoringModifiers:@"u"];
